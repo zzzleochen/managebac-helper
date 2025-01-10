@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "ManageBac Helper",
+  "version": "1.0",
+  "description": "Help extract information from ManageBac",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://vkbs.managebac.cn/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://vkbs.managebac.cn/*"],
+      "js": ["content.js"]
+    }
+  ]
+} 
