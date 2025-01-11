@@ -2,21 +2,24 @@
   "manifest_version": 3,
   "name": "ManageBac Helper",
   "version": "1.0",
-  "description": "Help extract information from ManageBac",
-  "permissions": [
-    "activeTab",
-    "storage"
-  ],
-  "host_permissions": [
-    "https://vkbs.managebac.cn/*"
-  ],
+  "description": "帮助从 ManageBac 提取作业信息",
+  "permissions": ["activeTab"],
+  "host_permissions": ["*://*.managebac.cn/*"],
+  "content_scripts": [{
+    "matches": ["*://*.managebac.cn/*"],
+    "js": ["content.js"]
+  }],
   "action": {
-    "default_popup": "popup.html"
-  },
-  "content_scripts": [
-    {
-      "matches": ["https://vkbs.managebac.cn/*"],
-      "js": ["content.js"]
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
     }
-  ]
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
 } 

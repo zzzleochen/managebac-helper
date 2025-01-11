@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# Testing
+coverage/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db 

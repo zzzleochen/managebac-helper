@@ -63,17 +63,22 @@
       font-weight: bold;
       color: #333;
       margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
     .assignment-meta {
       font-size: 13px;
       color: #666;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
     }
     .type-tag {
       display: inline-block;
       padding: 2px 6px;
       border-radius: 3px;
       font-size: 12px;
-      margin-right: 5px;
     }
     .type-formative {
       background-color: #e8f0fe;
@@ -83,10 +88,21 @@
       background-color: #fce8e6;
       color: #ea4335;
     }
+    .status-tag {
+      background-color: #fef7e0;
+      color: #f9ab00;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
     .no-assignments {
       text-align: center;
       color: #666;
       padding: 20px;
+    }
+    .score {
+      color: #ea4335;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -94,12 +110,12 @@
   <div class="header">
     <h2>ManageBac Helper</h2>
     <div class="button-group">
-      <button id="extractBtn">提取作业</button>
+      <button id="extractBtn">提取未交作业</button>
       <button id="exportBtn" class="secondary" disabled>导出</button>
     </div>
   </div>
   <div id="assignments">
-    <div class="no-assignments">点击"提取作业"按钮获取作业信息</div>
+    <div class="no-assignments">点击"提取未交作业"按钮获取作业信息</div>
   </div>
   <script src="popup.js"></script>
 </body>

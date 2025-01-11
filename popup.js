@@ -13,7 +13,7 @@ document.getElementById('extractBtn').addEventListener('click', async () => {
   
   chrome.tabs.sendMessage(tab.id, { action: 'extract' }, response => {
     // 恢复按钮状态
-    button.textContent = '提取作业';
+    button.textContent = '提取未交作业';
     button.disabled = false;
     
     if (response && response.assignments) {
@@ -21,7 +21,7 @@ document.getElementById('extractBtn').addEventListener('click', async () => {
       assignmentsDiv.innerHTML = '';
       
       if (response.assignments.length === 0) {
-        assignmentsDiv.innerHTML = '<div class="no-assignments">没有找到作业信息</div>';
+        assignmentsDiv.innerHTML = '<div class="no-assignments">没有找到未交作业</div>';
         exportBtn.disabled = true;
         return;
       }
@@ -38,10 +38,12 @@ document.getElementById('extractBtn').addEventListener('click', async () => {
           <div class="assignment-title">
             <span class="type-tag ${typeClass}">${assignment.type}</span>
             ${assignment.title}
+            <span class="status-tag">${assignment.status}</span>
           </div>
           <div class="assignment-meta">
             <div>课程: ${assignment.course}</div>
             <div>截止日期: ${assignment.dueDate}</div>
+            <div>分数: <span class="score">${assignment.score}</span></div>
           </div>
         `;
         assignmentsDiv.appendChild(div);
@@ -61,6 +63,8 @@ document.getElementById('exportBtn').addEventListener('click', () => {
 类型: ${assignment.type}
 课程: ${assignment.course}
 截止日期: ${assignment.dueDate}
+状态: ${assignment.status}
+分数: ${assignment.score}
 ----------------------------------------`;
   }).join('\n\n');
   
@@ -71,7 +75,7 @@ document.getElementById('exportBtn').addEventListener('click', () => {
   
   const a = document.createElement('a');
   a.href = url;
-  a.download = `managebac-assignments-${timestamp}.txt`;
+  a.download = `managebac-unsubmitted-${timestamp}.txt`;
   a.click();
   
   URL.revokeObjectURL(url);
